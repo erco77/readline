@@ -1,0 +1,13 @@
+# To build and run in linux, use 'make -f Makefile.LINUX'
+
+test-readline: test-readline.c readline.o
+	gcc -g -Wall -DLINUX test-readline.c readline.o -o test-readline
+	sleep 3
+	./test-readline
+
+readline.o: readline.c
+	gcc -g -Wall -DLINUX readline.c -c
+
+clean: FORCE
+	rm test-readline *.o
+FORCE:
